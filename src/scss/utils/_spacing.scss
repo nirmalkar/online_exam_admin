@@ -1,0 +1,34 @@
+$spaceamounts: (1, 2, 3, 4, 5, 7, 9, 11, 14, 17, 21, 40, 45, 50, 60);
+
+@each $spaceamount in $spaceamounts {
+  .has-margin-#{$spaceamount} {
+    margin: #{$spaceamount}em;
+  }
+  .has-margin-top-#{$spaceamount} {
+    margin-top: #{$spaceamount}em;
+  }
+  .has-margin-bottom-#{$spaceamount} {
+    margin-bottom: #{$spaceamount}em;
+  }
+  .has-margin-right-#{$spaceamount} {
+    margin-right: #{$spaceamount}em;
+  }
+  .has-margin-left-#{$spaceamount} {
+    margin-left: #{$spaceamount}em;
+  }
+  .has-padding-#{$spaceamount} {
+    padding: #{$spaceamount}em;
+  }
+  .has-padding-top-#{$spaceamount} {
+    padding-top: #{$spaceamount}em;
+  }
+  .has-padding-bottom-#{$spaceamount} {
+    padding-bottom: #{$spaceamount}em;
+  }
+  .has-padding-right-#{$spaceamount} {
+    padding-right: #{$spaceamount}em;
+  }
+  .has-padding-left-#{$spaceamount} {
+    padding-left: #{$spaceamount}em;
+  }
+}

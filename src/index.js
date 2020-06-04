@@ -7,8 +7,10 @@ import App from "./App";
 
 import "./scss/main.scss";
 
+const inputRef = React.createRef();
+
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode ref={inputRef}>
     <Router>
       <Switch>
         <App />

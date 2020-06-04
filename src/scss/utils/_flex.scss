@@ -1,0 +1,14 @@
+$justifies: (
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  space-evenly
+);
+@each $justify in $justifies {
+  .has-#{$justify} {
+    display: flex;
+    justify-content: $justify;
+  }
+}

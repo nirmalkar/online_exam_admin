@@ -1,0 +1,48 @@
+.login-form {
+  max-width: 300px;
+  margin: 2rem auto;
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}
+@media screen and (min-device-width: 1200px) and (max-device-width: 2800px) {
+  .card-style {
+    width: 28rem;
+    height: 20rem;
+    margin: auto;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
+  .card-style {
+    width: 25rem;
+    height: 20rem;
+    margin: auto;
+  }
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 768px) {
+  .card-style {
+    width: 23rem;
+    height: 20rem;
+    margin: auto;
+  }
+}
+@media only screen and (min-device-width: 568px) and (max-device-width: 480px) {
+  .card-style {
+    width: 22rem;
+    height: 18rem;
+    margin: auto;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  .card-style {
+    width: 19rem;
+    height: 18rem;
+    margin: auto;
+  }
+}

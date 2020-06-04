@@ -1,4 +1,4 @@
-$spaceamounts: (1, 2, 3, 4, 5, 7, 9, 11, 14, 17, 21, 40, 45, 50, 60);
+$spaceamounts: (1, 2, 3, 4, 5, 7, 9, 11, 14, 17, 21, 40, 45, 50, 60, 100);
 
 @each $spaceamount in $spaceamounts {
   .has-margin-#{$spaceamount} {
@@ -30,5 +30,8 @@ $spaceamounts: (1, 2, 3, 4, 5, 7, 9, 11, 14, 17, 21, 40, 45, 50, 60);
   }
   .has-padding-left-#{$spaceamount} {
     padding-left: #{$spaceamount}em;
+  }
+  .h-#{$spaceamount} {
+    height: #{$spaceamount}vh;
   }
 }

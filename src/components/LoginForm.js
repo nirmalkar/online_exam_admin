@@ -11,7 +11,7 @@ const LoginFrom = () => {
   const history = useHistory();
 
   const onFinish = (e) => {
-    history.push("/home");
+    history.push("/dashboard");
     resetEmail();
     resetPassword();
   };

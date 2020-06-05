@@ -20,7 +20,9 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {},
+  "rules": {
+    "react/display-name": 0
+  },
   "settings": {
     "react": {
       "version": "detect"

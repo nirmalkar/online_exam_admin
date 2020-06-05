@@ -1,10 +1,21 @@
 import React, { useContext } from "react";
-import { Modal, Button } from "antd";
+import { Modal, Button, Table } from "antd";
 
 import { ModalContext } from "../../contexts/ModalContext";
 
 const OptionModal = () => {
   const { optMdlVisible, setOptMdlVisible } = useContext(ModalContext);
+  const optData = [];
+  const optCol = [
+    {
+      title: "Options",
+      dataIndex: "option",
+    },
+    {
+      title: "Correct Option",
+      dataIndex: "correct",
+    },
+  ];
   return (
     <Modal
       title="Question Options"
@@ -15,7 +26,14 @@ const OptionModal = () => {
         </Button>,
       ]}
     >
-      <h3>Option Modal</h3>
+      <Table
+        bordered
+        size="middle"
+        scroll={{ y: "calc(48vh - 4em)", x: "100%" }}
+        pagination={false}
+        columns={optCol}
+        dataSource={optData}
+      />
     </Modal>
   );
 };

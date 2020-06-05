@@ -7,7 +7,7 @@ $justifies: (
   space-evenly
 );
 @each $justify in $justifies {
-  .has-#{$justify} {
+  .is-#{$justify} {
     display: flex;
     justify-content: $justify;
   }

@@ -1,12 +1,14 @@
 import React from "react";
 import { Form, Input, Button, Select, InputNumber, Card } from "antd";
 
+import QuestionTable from "./QuestionTable";
+
 const { Option } = Select;
 const { TextArea } = Input;
 const AddQueForm = () => {
   return (
     <>
-      <Card className="has-margin-top-5 has-margin-right-1 has-margin-left-1">
+      <Card className="has-margin-top-1 has-margin-right-1 has-margin-left-1">
         <Form
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
@@ -39,10 +41,11 @@ const AddQueForm = () => {
               <Option value="4">Option Four</Option>
             </Select>
           </Form.Item>
-          <div className="has-center has-margin-top-4">
-            <Button type="primary">Submit</Button>
+          <div className="is-center has-margin-top-2 has-margin-bottom-2">
+            <Button type="primary">Add</Button>
           </div>
         </Form>
+        <QuestionTable />
       </Card>
     </>
   );

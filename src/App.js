@@ -1,11 +1,14 @@
 import React from "react";
 
 import Routes from "./routes";
+import QuestionProvider from "./contexts/QuestionContext";
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <QuestionProvider>
+        <Routes />
+      </QuestionProvider>
     </div>
   );
 }

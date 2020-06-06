@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, message } from "antd";
 import { useHistory } from "react-router-dom";
 
 import { useInputState } from "../hooks/useInputState";
@@ -11,6 +11,10 @@ const LoginFrom = () => {
   const history = useHistory();
 
   const onFinish = (e) => {
+    if (!password.length || !email.length) {
+      message.info("Please fill all the input fields", 4);
+      return;
+    }
     history.push("/dashboard");
     resetEmail();
     resetPassword();
@@ -27,7 +31,7 @@ const LoginFrom = () => {
           rules={[{ required: true, message: "Please input your Username!" }]}
         >
           <Input
-            className="b-radius"
+            className="b-r"
             placeholder="email"
             onChange={setEmail}
             value={email}
@@ -37,7 +41,7 @@ const LoginFrom = () => {
           rules={[{ required: true, message: "Please input your Password!" }]}
         >
           <Input
-            className="b-radius"
+            className="b-r"
             type="password"
             onChange={setPassword}
             placeholder="Password"
@@ -55,7 +59,11 @@ const LoginFrom = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button htmlType="submit" className="login-form-button b-radius">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button b-r"
+          >
             Log in
           </Button>
         </Form.Item>

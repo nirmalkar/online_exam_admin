@@ -2,19 +2,25 @@ import React, { useContext } from "react";
 import { Modal, Button, Table } from "antd";
 
 import { ModalContext } from "../../contexts/ModalContext";
+import { QuestionContext } from "../../contexts/QuestionContext";
 
 const OptionModal = () => {
   const { optMdlVisible, setOptMdlVisible } = useContext(ModalContext);
-  const optData = [];
+  const { optObj } = useContext(QuestionContext);
+  const optData = optObj.option;
   const optCol = [
     {
       width: 350,
       title: "Options",
-      dataIndex: "option",
+      dataIndex: "title",
     },
     {
       title: "Correct Option",
+      align: "center",
       dataIndex: "correct",
+      render: (data) => {
+        return data ? <i className="fas fa-check success fa-lg" /> : "";
+      },
     },
   ];
   return (

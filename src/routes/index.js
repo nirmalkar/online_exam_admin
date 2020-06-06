@@ -7,8 +7,8 @@ import Home from "../pages/Home";
 const Routes = () => {
   return (
     <>
-      <Route exact path="/" render={() => <Home />} />
       <Route exact path="/login" render={() => <LandingPage />} />
+      <Route path="/" render={() => <Home />} />
     </>
   );
 };

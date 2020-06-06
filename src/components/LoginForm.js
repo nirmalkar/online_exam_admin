@@ -33,7 +33,7 @@ const LoginFrom = () => {
           <Input
             className="b-r"
             placeholder="email"
-            onChange={setEmail}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
         </Form.Item>
@@ -43,7 +43,7 @@ const LoginFrom = () => {
           <Input
             className="b-r"
             type="password"
-            onChange={setPassword}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             value={password}
           />

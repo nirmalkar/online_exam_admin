@@ -3,16 +3,24 @@ import { Table } from "antd";
 
 import { ModalContext } from "../../contexts/ModalContext";
 import OptionModal from "../modals/OptionModal";
+import { QuestionContext } from "../../contexts/QuestionContext";
 
 const QuestionTable = () => {
-  console.log(useContext(ModalContext));
+  const { questions } = useContext(QuestionContext);
   const { setOptMdlVisible } = useContext(ModalContext);
   const columns = [
     {
+      width: 400,
       title: "Question",
       dataIndex: "question",
     },
     {
+      width: 100,
+      title: "Marks",
+      dataIndex: "marks",
+    },
+    {
+      width: 100,
       title: "Option",
       dataIndex: "option",
       render: (option) => {
@@ -26,33 +34,10 @@ const QuestionTable = () => {
         );
       },
     },
-    {
-      title: "Address",
-      dataIndex: "address",
-    },
   ];
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-    },
-  ];
+  const data = questions;
   return (
-    <div className="has-padding-0">
+    <div className="">
       <Table
         bordered
         size="middle"

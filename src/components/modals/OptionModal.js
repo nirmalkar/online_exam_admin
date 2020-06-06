@@ -8,6 +8,7 @@ const OptionModal = () => {
   const optData = [];
   const optCol = [
     {
+      width: 350,
       title: "Options",
       dataIndex: "option",
     },
@@ -20,6 +21,7 @@ const OptionModal = () => {
     <Modal
       title="Question Options"
       visible={optMdlVisible}
+      onCancel={() => setOptMdlVisible()}
       footer={[
         <Button key="submit" type="primary" onClick={() => setOptMdlVisible()}>
           Ok

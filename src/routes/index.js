@@ -2,13 +2,13 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import LandingPage from "../pages/LandingPage";
-import Home from "../pages/Home";
+import Dashboard from "../pages/Dashboard";
 
 const Routes = () => {
   return (
     <>
       <Route exact path="/login" render={() => <LandingPage />} />
-      <Route path="/" render={() => <Home />} />
+      <Route path="/" render={() => <Dashboard />} />
     </>
   );
 };

@@ -8,7 +8,7 @@ const QueRoutes = () => {
   return (
     <>
       <ModalProvider>
-        <Route exact path="/add-questions" component={AddQueForm} />
+        <Route exact path="/dashboard/add-questions" component={AddQueForm} />
       </ModalProvider>
     </>
   );

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Form, Input, Button, Select, InputNumber, Card } from "antd";
+import { Form, Input, Button, Select, InputNumber, Card, message } from "antd";
+import { v4 as uuid } from "uuid";
 
 import QuestionTable from "./QuestionTable";
 import { QuestionContext } from "../../contexts/QuestionContext";
@@ -29,14 +30,13 @@ const AddQueForm = () => {
     correctOpt,
     setCorrectOpt,
     resetCorrectOpt,
+    optObj,
+    setOptObj,
+    questions,
+    setQuestions,
   } = useContext(QuestionContext);
-
   const formItemLayout = {
-    labelCol: {
-      sm: { span: 6 },
-      md: { span: 4 },
-      xl: { span: 4 },
-    },
+    labelCol: { sm: { span: 6 }, md: { span: 4 } },
     wrapperCol: {
       sm: { span: 18 },
       md: { span: 20 },
@@ -45,6 +45,26 @@ const AddQueForm = () => {
     },
   };
   const onFinish = () => {
+    if (
+      !question ||
+      !optOne ||
+      !optTwo ||
+      !optThree ||
+      !optFour ||
+      !marks ||
+      !correctOpt
+    ) {
+      message.info("Please fill all the fields");
+      return;
+    }
+
+    const option = optObj.option.map((opt) => {
+      if (opt.id === correctOpt) {
+        opt.correct = true;
+      }
+      return opt;
+    });
+    setQuestions([...questions, { question, id: uuid(), option, marks }]);
     resetQuestion();
     resetOptOne();
     resetOptTwo();
@@ -53,6 +73,17 @@ const AddQueForm = () => {
     resetMarks();
     resetMarks();
     resetCorrectOpt();
+  };
+  const onCorrOptChange = (val) => {
+    setCorrectOpt(val);
+    setOptObj({
+      option: [
+        { title: optOne, id: "1", correct: false },
+        { title: optTwo, id: "2", correct: false },
+        { title: optThree, id: "3", correct: false },
+        { title: optFour, id: "4", correct: false },
+      ],
+    });
   };
   return (
     <>
@@ -109,7 +140,7 @@ const AddQueForm = () => {
           <Form.Item label="Correct Option">
             <Select
               value={correctOpt}
-              onChange={(val) => setCorrectOpt(val)}
+              onChange={(val) => onCorrOptChange(val)}
               className="has-width-10"
             >
               <Option value="1">Option One</Option>

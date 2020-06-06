@@ -2,12 +2,18 @@ import React, { useContext } from "react";
 import { Table } from "antd";
 
 import { ModalContext } from "../../contexts/ModalContext";
-import OptionModal from "../modals/OptionModal";
 import { QuestionContext } from "../../contexts/QuestionContext";
-
+import OptionModal from "../modals/OptionModal";
+import DeleteModal from "../modals/DeleteModal";
 const QuestionTable = () => {
   const { questions } = useContext(QuestionContext);
-  const { setOptMdlVisible } = useContext(ModalContext);
+  const { setOptMdlVisible, setDelModalVisible, setId } = useContext(
+    ModalContext
+  );
+  const showDelModal = (id) => {
+    setDelModalVisible();
+    setId(id);
+  };
   const columns = [
     {
       width: 400,
@@ -21,6 +27,7 @@ const QuestionTable = () => {
     },
     {
       width: 100,
+      align: "center",
       title: "Option",
       dataIndex: "option",
       render: (option) => {
@@ -29,6 +36,22 @@ const QuestionTable = () => {
             <i
               className="fas fa-lg fa-eye"
               onClick={() => setOptMdlVisible()}
+            />
+          </div>
+        );
+      },
+    },
+    {
+      width: 100,
+      align: "center",
+      title: "Delete Modal",
+      dataIndex: "id",
+      render: (id) => {
+        return (
+          <div style={{ textAlign: "center" }}>
+            <i
+              className="fas fa-lg fa-trash"
+              onClick={() => showDelModal(id)}
             />
           </div>
         );
@@ -47,6 +70,7 @@ const QuestionTable = () => {
         dataSource={data}
       />
       <OptionModal />
+      <DeleteModal />
     </div>
   );
 };

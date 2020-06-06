@@ -12,7 +12,8 @@ const QuestionProvider = (props) => {
   const [optFour, setOptFour, resetOptFour] = useInputState("");
   const [marks, setMarks, resetMarks] = useInputState("");
   const [correctOpt, setCorrectOpt, resetCorrectOpt] = useInputState("");
-
+  const [optObj, setOptObj, resetOptObj] = useInputState({});
+  const [questions, setQuestions, resetQuestions] = useInputState([]);
   return (
     <QuestionContext.Provider
       value={{
@@ -37,6 +38,12 @@ const QuestionProvider = (props) => {
         correctOpt,
         setCorrectOpt,
         resetCorrectOpt,
+        optObj,
+        setOptObj,
+        resetOptObj,
+        questions,
+        setQuestions,
+        resetQuestions,
       }}
     >
       {props.children}

@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 const Routes = () => {
   return (
     <>
-      <Route path="/" render={() => <Home />} />
+      <Route exact path="/" render={() => <Home />} />
       <Route exact path="/login" render={() => <LandingPage />} />
     </>
   );

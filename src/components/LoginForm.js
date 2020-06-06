@@ -26,12 +26,18 @@ const LoginFrom = () => {
         <Form.Item
           rules={[{ required: true, message: "Please input your Username!" }]}
         >
-          <Input placeholder="email" onChange={setEmail} value={email} />
+          <Input
+            className="b-radius"
+            placeholder="email"
+            onChange={setEmail}
+            value={email}
+          />
         </Form.Item>
         <Form.Item
           rules={[{ required: true, message: "Please input your Password!" }]}
         >
           <Input
+            className="b-radius"
             type="password"
             onChange={setPassword}
             placeholder="Password"
@@ -49,7 +55,7 @@ const LoginFrom = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button htmlType="submit" className="login-form-button">
+          <Button htmlType="submit" className="login-form-button b-radius">
             Log in
           </Button>
         </Form.Item>

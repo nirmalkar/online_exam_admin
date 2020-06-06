@@ -38,3 +38,7 @@ $spaceamounts: (1, 2, 3, 4, 5, 7, 9, 10, 11, 14, 17, 21, 40, 45, 50, 60, 100);
     width: #{$spaceamount}em !important;
   }
 }
+
+.b-radius {
+  border-radius: 0.3em;
+}

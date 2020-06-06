@@ -1,0 +1,10 @@
+$colors: (#36454f, #ffffff, #f1f1f1);
+
+@each $color in $colors {
+  .c-#{$color} {
+    background: $color;
+  }
+}
+.c-w {
+  background: #ffffff;
+}

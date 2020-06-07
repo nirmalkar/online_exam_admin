@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import QuestionTable from "./QuestionTable";
 import { QuestionContext } from "../../contexts/QuestionContext";
 import { ModalContext } from "../../contexts/ModalContext";
+import SubmitButton from "./SubmitButton";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -170,12 +171,18 @@ const QueForm = () => {
             </Select>
           </Form.Item>
           <div className="is-center has-margin-top-2 has-margin-bottom-2">
-            <Button type="primary" htmlType="submit" className="b-r">
+            <Button
+              ghost={true}
+              type="primary"
+              htmlType="submit"
+              className="b-r"
+            >
               Add Question
             </Button>
           </div>
         </Form>
         <QuestionTable />
+        <SubmitButton />
       </Card>
     </>
   );

@@ -33,7 +33,7 @@ const QuestionTable = () => {
         setQuestion(que.question);
         setMarks(que.marks);
         setCorrectOpt(que.correctOpt);
-        que.option.map((opt, i) => {
+        que.option.forEach((opt, i) => {
           if (opt.id === JSON.stringify(i + 1)) {
             setOptOne(opt.title);
             setOptTwo(opt.title);

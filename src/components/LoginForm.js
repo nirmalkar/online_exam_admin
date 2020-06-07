@@ -3,6 +3,7 @@ import { Form, Input, Button, Checkbox, message } from "antd";
 import { useHistory } from "react-router-dom";
 
 import { useInputState } from "../hooks/useInputState";
+import { postData } from "../utils/Api";
 
 const LoginFrom = () => {
   const [email, setEmail, resetEmail] = useInputState("");
@@ -10,14 +11,29 @@ const LoginFrom = () => {
 
   const history = useHistory();
 
-  const onFinish = (e) => {
+  const onFinish = async () => {
     if (!password.length || !email.length) {
       message.info("Please fill all the input fields", 4);
       return;
     }
-    history.push("/dashboard");
-    resetEmail();
-    resetPassword();
+    const data = {
+      email,
+      password,
+    };
+
+    postData("auth/login", data)
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem("JWT_TOKEN", JSON.stringify(res.data.token));
+          history.push("/dashboard");
+          message.success(`welcome ${res.data.user.name}`);
+          resetEmail();
+          resetPassword();
+        }
+      })
+      .catch((err) => {
+        message.error(err.response.data.msg, 4);
+      });
   };
   return (
     <>

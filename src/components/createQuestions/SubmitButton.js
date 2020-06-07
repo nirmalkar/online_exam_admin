@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 import { QuestionContext } from "../../contexts/QuestionContext";
 
 const SubmitButton = () => {
   const { questions } = useContext(QuestionContext);
   const SubmitQue = () => {
+    if (questions.length) {
+      message.success("Questions submitted successfully");
+    }
     console.log(questions);
   };
   return (

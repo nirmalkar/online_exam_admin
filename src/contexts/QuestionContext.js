@@ -1,6 +1,8 @@
 import React, { createContext } from "react";
 import PropTypes from "prop-types";
+
 import { useInputState } from "../hooks/useInputState";
+import useToggleState from "../hooks/useToggleState";
 
 export const QuestionContext = createContext();
 
@@ -14,6 +16,7 @@ const QuestionProvider = (props) => {
   const [correctOpt, setCorrectOpt, resetCorrectOpt] = useInputState("");
   const [optObj, setOptObj, resetOptObj] = useInputState({});
   const [questions, setQuestions, resetQuestions] = useInputState([]);
+  const [isEdit, setIsEdit] = useToggleState(false);
   return (
     <QuestionContext.Provider
       value={{
@@ -44,6 +47,8 @@ const QuestionProvider = (props) => {
         questions,
         setQuestions,
         resetQuestions,
+        isEdit,
+        setIsEdit,
       }}
     >
       {props.children}

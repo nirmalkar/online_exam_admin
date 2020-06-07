@@ -4,10 +4,11 @@ import { v4 as uuid } from "uuid";
 
 import QuestionTable from "./QuestionTable";
 import { QuestionContext } from "../../contexts/QuestionContext";
+import { ModalContext } from "../../contexts/ModalContext";
 
 const { Option } = Select;
 const { TextArea } = Input;
-const AddQueForm = () => {
+const QueForm = () => {
   const {
     question,
     setQuestion,
@@ -34,7 +35,11 @@ const AddQueForm = () => {
     setOptObj,
     questions,
     setQuestions,
+    isEdit,
+    setIsEdit,
+    setId,
   } = useContext(QuestionContext);
+  const { id } = useContext(ModalContext);
   const formItemLayout = {
     labelCol: { sm: { span: 6 }, md: { span: 4 } },
     wrapperCol: {
@@ -57,14 +62,29 @@ const AddQueForm = () => {
       message.info("Please fill all the fields");
       return;
     }
-
     const option = optObj.option.map((opt) => {
       if (opt.id === correctOpt) {
         opt.correct = true;
       }
       return opt;
     });
-    setQuestions([...questions, { question, id: uuid(), option, marks }]);
+    if (isEdit) {
+      questions.forEach((que) => {
+        if (que.id === id) {
+          que.question = question;
+          que.marks = marks;
+          que.correctOpt = correctOpt;
+          que.option = option;
+        }
+      });
+      setIsEdit();
+      setId("");
+    } else {
+      setQuestions([
+        ...questions,
+        { question, id: uuid(), option, marks, correctOpt },
+      ]);
+    }
     resetQuestion();
     resetOptOne();
     resetOptTwo();
@@ -161,4 +181,4 @@ const AddQueForm = () => {
   );
 };
 
-export default AddQueForm;
+export default QueForm;

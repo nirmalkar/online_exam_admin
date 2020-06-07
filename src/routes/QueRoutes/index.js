@@ -2,13 +2,13 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import ModalProvider from "../../contexts/ModalContext";
-import AddQueForm from "../../components/createQuestions/AddQueForm";
+import QueForm from "../../components/createQuestions/QueForm";
 
 const QueRoutes = () => {
   return (
     <>
       <ModalProvider>
-        <Route exact path="/dashboard/create-question" component={AddQueForm} />
+        <Route exact path="/dashboard/create-question" component={QueForm} />
       </ModalProvider>
     </>
   );

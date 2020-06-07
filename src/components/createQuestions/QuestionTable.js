@@ -5,8 +5,19 @@ import { ModalContext } from "../../contexts/ModalContext";
 import { QuestionContext } from "../../contexts/QuestionContext";
 import OptionModal from "../modals/OptionModal";
 import DeleteModal from "../modals/DeleteModal";
+
 const QuestionTable = () => {
-  const { questions } = useContext(QuestionContext);
+  const {
+    questions,
+    setQuestion,
+    setOptOne,
+    setOptTwo,
+    setOptThree,
+    setOptFour,
+    setMarks,
+    setCorrectOpt,
+    setIsEdit,
+  } = useContext(QuestionContext);
   const { setOptMdlVisible, setDelModalVisible, setId } = useContext(
     ModalContext
   );
@@ -14,10 +25,31 @@ const QuestionTable = () => {
     setDelModalVisible();
     setId(id);
   };
+  const editQuestion = (id) => {
+    setId(id);
+    setIsEdit();
+    questions.forEach((que) => {
+      if (que.id === id) {
+        setQuestion(que.question);
+        setMarks(que.marks);
+        setCorrectOpt(que.correctOpt);
+        que.option.map((opt, i) => {
+          if (opt.id === JSON.stringify(i + 1)) {
+            setOptOne(opt.title);
+            setOptTwo(opt.title);
+            setOptThree(opt.title);
+            setOptFour(opt.title);
+          }
+          return opt;
+        });
+        return que;
+      }
+    });
+  };
   const columns = [
     {
-      width: 400,
       title: "Question",
+      width: 400,
       dataIndex: "question",
     },
     {
@@ -26,9 +58,9 @@ const QuestionTable = () => {
       dataIndex: "marks",
     },
     {
+      title: "Option",
       width: 100,
       align: "center",
-      title: "Option",
       dataIndex: "option",
       render: (option) => {
         return (
@@ -42,9 +74,25 @@ const QuestionTable = () => {
       },
     },
     {
+      title: "Edit",
       width: 100,
       align: "center",
-      title: "Delete Modal",
+      dataIndex: "id",
+      render: (id) => {
+        return (
+          <div style={{ textAlign: "center" }}>
+            <i
+              className="fas fa-lg fa-pencil-alt"
+              onClick={() => editQuestion(id)}
+            />
+          </div>
+        );
+      },
+    },
+    {
+      width: 100,
+      align: "center",
+      title: "Delete",
       dataIndex: "id",
       render: (id) => {
         return (

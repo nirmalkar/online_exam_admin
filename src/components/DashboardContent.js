@@ -5,11 +5,9 @@ import QueRoutes from "../routes/QueRoutes/index";
 const DashboardContent = () => {
   const { Content } = Layout;
   return (
-    <>
-      <Content>
-        <QueRoutes />
-      </Content>
-    </>
+    <Content>
+      <QueRoutes />
+    </Content>
   );
 };
 

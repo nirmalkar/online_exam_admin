@@ -7,8 +7,8 @@ import Dashboard from "../pages/Dashboard";
 const Routes = () => {
   return (
     <>
-      <Route exact path="/login" render={() => <LandingPage />} />
-      <Route path="/" render={() => <Dashboard />} />
+      <Route exact path="/" render={() => <LandingPage />} />
+      <Route path="/dashboard" render={() => <Dashboard />} />
     </>
   );
 };

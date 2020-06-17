@@ -21,18 +21,20 @@ const LoginFrom = () => {
       password,
     };
 
-    postData("auth/login", data)
+    postData("api/user/login", data)
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("JWT_TOKEN", JSON.stringify(res.data.token));
+          console.log(res);
+          localStorage.setItem("JWT_TOKEN", res.data.token);
           history.push("/dashboard");
-          message.success(`welcome ${res.data.user.name}`);
+          message.success(`welcome`);
           resetEmail();
           resetPassword();
         }
       })
       .catch((err) => {
-        message.error(err.response.data.msg, 4);
+        // message.error(err 4);
+        console.log(err);
       });
   };
   return (

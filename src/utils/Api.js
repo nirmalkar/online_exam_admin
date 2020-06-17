@@ -5,7 +5,7 @@ export function postData(path, postData) {
   if (localStorage.getItem(JWT_TOKEN)) {
     const config = {
       headers: {
-        Authorization: "Bearer " + JSON.parse(localStorage.getItem(JWT_TOKEN)),
+        Authorization: "Bearer " + localStorage.getItem(JWT_TOKEN),
       },
     };
     const url = `${URL}/${path}`;
